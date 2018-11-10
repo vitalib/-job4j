@@ -1,5 +1,6 @@
 package ru.job4j.baranov.iterator;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import static org.junit.Assert.assertThat;
  * @since 0.2
  */
 
-public class MatrixIteratorTest {
+public class EventItTest {
     /**
      * Test echo
      */
@@ -28,13 +29,13 @@ public class MatrixIteratorTest {
         }
         @Override
         public Iterator<Integer> iterator() {
-            return new MatrixIterator(arr);
+            return new EventIt(arr);
         }
     }
     @Test
     public void whenInnerArraysHasEqualLengthSequantialShowReturnSequantial() {
         int[][] testArray = {{1, 2}, {3, 4}, {5, 6}, {7, 8}, {9, 10}};
-        int[] expectedOutput = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] expectedOutput = {2, 4, 6, 8, 10};
         ArrayList<Integer> result = new ArrayList<>();
 
         ForEachArray forEachArray = new ForEachArray(testArray);
@@ -48,7 +49,7 @@ public class MatrixIteratorTest {
     @Test
     public void whenInnerArraysHasDifLengthSequantialShowReturnSequantial() {
         int[][] testArray = {{1, 2}, {3, 4, 5, 6}, {7, 8}, {9, 10}};
-        int[] expectedOutput = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] expectedOutput = {2, 4, 6, 8, 10};
         ArrayList<Integer> result = new ArrayList<>();
 
         ForEachArray forEachArray = new ForEachArray(testArray);
@@ -73,5 +74,4 @@ public class MatrixIteratorTest {
         assertThat(result.size(), is(0));
     }
 }
-
 
