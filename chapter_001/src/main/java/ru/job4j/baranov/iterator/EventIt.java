@@ -1,6 +1,7 @@
 package ru.job4j.baranov.iterator;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class EventIt implements Iterator<Integer> {
     private final int[][] arr;
@@ -33,6 +34,9 @@ public class EventIt implements Iterator<Integer> {
     @Override
     public Integer next() {
         int[] indexes = findNextEven();
+        if (indexes == null) {
+            throw new NoSuchElementException();
+        }
         i = indexes[0];
         j = indexes[1];
         Integer item = arr[i][j++];
@@ -41,5 +45,10 @@ public class EventIt implements Iterator<Integer> {
             j = 0;
         }
         return item;
+    }
+
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException();
     }
 }
