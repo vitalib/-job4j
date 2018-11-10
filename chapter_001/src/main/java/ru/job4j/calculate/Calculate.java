@@ -8,11 +8,18 @@ package ru.job4j.calculate;
 public class Calculate {
     /**
      * Method echo
-     * @author Vitali Baranov
-     * @param value string literal
-     * @return doubled value paramether
+     * @param name Your name
+     * @return Echo plus your name
      */
-    public String echo(String value) {
-        return String.format("Echo: %s", value);
+    public String echo(String name) {
+        return "Echo, echo, echo : " + name;
+    }
+
+    /**
+     * Main
+     * @param args - args
+     */
+    public static void main(String[] args) {
+        System.out.println("Hello World");
     }
 }
