@@ -13,26 +13,31 @@ public class Converter {
                 return current == null;
             }
 
-            private void goToNextNonEmptyIterator() {
-                while (!currentIsNull() && !current.hasNext()) {
+            private boolean hasNonEmptyIterator() {
+                boolean result = false;
+                while (!currentIsNull()) {
                     try {
-                        current = it.next();
+                        if (current.hasNext()) {
+                            result = true;
+                            break;
+                        } else {
+                            current = it.next();
+                        }
                     } catch (NoSuchElementException ex) {
                         current = null;
                     }
                 }
+                return result;
             }
 
             @Override
             public boolean hasNext() {
-                goToNextNonEmptyIterator();
-                return !currentIsNull() && current.hasNext();
+                return hasNonEmptyIterator();
             }
 
             @Override
             public Integer next() {
-                goToNextNonEmptyIterator();
-                if (!currentIsNull()) {
+                if (hasNonEmptyIterator()) {
                     return current.next();
                 } else {
                     throw new NoSuchElementException();
@@ -42,7 +47,6 @@ public class Converter {
             @Override
             public void remove() {
                 throw new UnsupportedOperationException();
-
             }
         };
     }
