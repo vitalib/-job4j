@@ -14,20 +14,15 @@ public class Converter {
             }
 
             private boolean hasNonEmptyIterator() {
-                boolean result = false;
-                while (!currentIsNull()) {
-                    try {
-                        if (current.hasNext()) {
-                            result = true;
-                            break;
-                        } else {
-                            current = it.next();
-                        }
-                    } catch (NoSuchElementException ex) {
-                        current = null;
+                boolean currentIteratorIsNotEmpty = false;
+                while (!(currentIteratorIsNotEmpty = current.hasNext())) {
+                    if (it.hasNext()) {
+                        current = it.next();
+                    } else {
+                        break;
                     }
                 }
-                return result;
+                return currentIteratorIsNotEmpty;
             }
 
             @Override
