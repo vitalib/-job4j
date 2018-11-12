@@ -1,4 +1,4 @@
-package ru.job4j.baranov.iterator.generic;
+package ru.job4j.baranov.generic;
 
 import org.junit.Before;
 import org.junit.Test;
