@@ -26,6 +26,15 @@ public class SimpleArray<T> implements Iterable<T> {
 
     }
 
+    public int indexOf(T model) {
+        for (int i = 0; i < n; i++) {
+            if (a[i] == model) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void set(int index, T model) {
         if (indexInBounds(index) && index < n) {
             a[index] = model;
