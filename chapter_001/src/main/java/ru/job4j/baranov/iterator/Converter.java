@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 
 public class Converter {
     public Iterator<Integer> convert(Iterator<Iterator<Integer>> it) {
-        return new Iterator<Integer> (){
+        return new Iterator<Integer>() {
             private Iterator<Integer> current = it.next();
 
             private boolean currentIsNull() {
@@ -14,10 +14,11 @@ public class Converter {
             }
 
             private boolean hasNonEmptyIterator() {
-                boolean currentIteratorIsNotEmpty = false;
-                while (!(currentIteratorIsNotEmpty = current.hasNext())) {
+                boolean currentIteratorIsNotEmpty = current.hasNext();
+                while (!currentIteratorIsNotEmpty) {
                     if (it.hasNext()) {
                         current = it.next();
+                        currentIteratorIsNotEmpty = current.hasNext();
                     } else {
                         break;
                     }
