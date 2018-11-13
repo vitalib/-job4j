@@ -1,12 +1,12 @@
 package ru.job4j.baranov.generic;
 
 public abstract class AbstractStore<T extends Base> implements Store<T> {
-    private SimpleArray<String> ids;
-    private SimpleArray<T> items;
+    private SimpleList<String> ids;
+    private SimpleList<T> items;
 
     public AbstractStore(int size) {
-        ids = new SimpleArray<>(size);
-        items = new SimpleArray<>(size);
+        ids = new SimpleList<>(size);
+        items = new SimpleList<>(size);
     }
 
     @Override

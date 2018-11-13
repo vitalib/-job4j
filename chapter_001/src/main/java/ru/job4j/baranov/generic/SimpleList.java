@@ -2,11 +2,11 @@ package ru.job4j.baranov.generic;
 
 import java.util.Iterator;
 
-public class SimpleArray<T> implements Iterable<T> {
+public class SimpleList<T> implements Iterable<T> {
     private T[] a;
     private int n;
 
-    public SimpleArray(int size) {
+    public SimpleList(int size) {
         a = (T[]) new Object[size];
         n = 0;
     }
@@ -89,12 +89,12 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     public static void main(String[] args) {
-        SimpleArray<Integer> simpleArray = new SimpleArray<>(10);
+        SimpleList<Integer> simpleList = new SimpleList<>(10);
         for (int i = 0; i < 12; i++) {
-            simpleArray.add(i);
+            simpleList.add(i);
         }
 
-        for (int i : simpleArray) {
+        for (int i : simpleList) {
             System.out.println(i);
         }
 
@@ -102,6 +102,4 @@ public class SimpleArray<T> implements Iterable<T> {
 
 }
 
-class SimpleArrayOutOfBoundException extends ArrayIndexOutOfBoundsException {
 
-}
