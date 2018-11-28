@@ -1,19 +1,17 @@
 package ru.job4j.baranov.list;
 
-public class SimpleStack<T> extends SimpleLinkedList<T> {
-    private int size = 0;
+public class SimpleStack<T> {
+    SimpleLinkedList<T> linkedList = new SimpleLinkedList<>();
 
     public boolean isEmpty() {
-        return size == 0;
+        return linkedList.getSize() == 0;
     }
     public void push(T value) {
-        add(value);
-        size++;
+        linkedList.add(value);
     }
 
     public T poll() {
-        size--;
-        return delete();
+        return linkedList.delete();
     }
 
 }
