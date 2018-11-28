@@ -3,7 +3,7 @@ package ru.job4j.baranov.list;
 import org.junit.Test;
 import org.junit.Before;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 
 public class SimpleLinkedListTest {
@@ -33,6 +33,15 @@ public class SimpleLinkedListTest {
         int result = list.delete();
 
         assertThat(result, is(3));
+    }
+
+
+    @Test
+    public void whenRunInIterableContextReturnCorrectValue() {
+        int value = 3;
+        for (int val: list){
+            assertEquals(val, value--);
+        }
     }
 
 }

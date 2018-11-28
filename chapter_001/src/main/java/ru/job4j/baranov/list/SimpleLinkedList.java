@@ -1,6 +1,8 @@
 package ru.job4j.baranov.list;
 
-public class SimpleLinkedList<E> {
+import java.util.Iterator;
+
+public class SimpleLinkedList<E> implements Iterable<E>{
 
     private int size;
     private Node<E> first;
@@ -41,6 +43,25 @@ public class SimpleLinkedList<E> {
      */
     public int getSize() {
         return size;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new Iterator<E>() {
+
+            private Node<E> tmp = first;
+            @Override
+            public boolean hasNext() {
+                return tmp != null;
+            }
+
+            @Override
+            public E next() {
+                E value = tmp.data;
+                tmp = tmp.next;
+                return value;
+            }
+        };
     }
 
     /**
