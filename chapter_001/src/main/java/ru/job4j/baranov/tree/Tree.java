@@ -9,11 +9,14 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
 
     public Tree(E value) {
         this.root = new Node(value);
-        elements = 0;
+        elements = 1;
     }
 
     @Override
     public boolean add(E parent, E child) {
+        if (findBy(child).isPresent()) {
+            return false;
+        }
         Optional<Node<E>> optionalParent = findBy(parent);
         if (optionalParent.isPresent()) {
             elements++;
