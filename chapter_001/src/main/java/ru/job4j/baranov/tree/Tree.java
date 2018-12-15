@@ -71,4 +71,20 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
             }
         };
     }
+
+    public boolean isBinary() {
+        return recursiveIsBinary(root);
+    }
+
+    private boolean recursiveIsBinary(Node<E> node) {
+        if (node.leaves().size() > 2) {
+            return false;
+        }
+        for (Node<E> child : node.leaves()) {
+            if (!recursiveIsBinary(child)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
