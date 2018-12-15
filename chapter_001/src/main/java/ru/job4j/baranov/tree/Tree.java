@@ -5,11 +5,13 @@ import java.util.*;
 public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     private Node<E> root;
     private int elements;
+    private int modifications;
 
 
     public Tree(E value) {
         this.root = new Node(value);
         elements = 1;
+        modifications = 1;
     }
 
     @Override
@@ -20,6 +22,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         Optional<Node<E>> optionalParent = findBy(parent);
         if (optionalParent.isPresent()) {
             elements++;
+            modifications++;
             Node<E> nodeParent = optionalParent.get();
             nodeParent.add(new Node(child));
         }
@@ -47,17 +50,17 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     public Iterator<E> iterator() {
         return new Iterator<E>() {
             Queue<Node<E>> nodes = new LinkedList<>();
-            final int elementsIter = elements;
+            final int iterModification = modifications;
             {
                 nodes.offer(root);
             }
 
             @Override
             public boolean hasNext() {
-                if (elementsIter == 0) {
+                if (elements == 0) {
                     return false;
                 }
-                if (elements != elementsIter) {
+                if (iterModification != modifications) {
                     throw new ConcurrentModificationException();
                 }
                 return nodes.size() != 0;
