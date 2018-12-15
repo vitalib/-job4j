@@ -39,7 +39,7 @@ public class SimpleLinkedListTest {
     @Test
     public void whenRunInIterableContextReturnCorrectValue() {
         int value = 3;
-        for (int val: list){
+        for (int val: list) {
             assertEquals(val, value--);
         }
     }

@@ -13,14 +13,14 @@ import static org.junit.Assert.*;
 public class UserTest {
 
     @Test
-    public void whenInvokeUserConstructorUserObjectIsCreated(){
+    public void whenInvokeUserConstructorUserObjectIsCreated() {
         User user = new User("name", 0, new GregorianCalendar(1983, 11, 24));
         assertThat(user instanceof User, is(true));
     }
 
     @Test
     @Ignore
-    public void whenTwoUsersWithSameFieldsWithouProperHashAndEqualsAreStoredTwiceInMap(){
+    public void whenTwoUsersWithSameFieldsWithouProperHashAndEqualsAreStoredTwiceInMap() {
         User user1 = new User("Vitali", 0, new GregorianCalendar(1983, 11, 24));
         User user2 = new User("Vitali", 0, new GregorianCalendar(1983, 11, 24));
 
@@ -38,7 +38,7 @@ public class UserTest {
 
     @Test
     @Ignore
-    public void whenTwoUsersWithSameFieldsWithProperHashwithouEqualsAreStoredTwiceInMap(){
+    public void whenTwoUsersWithSameFieldsWithProperHashwithouEqualsAreStoredTwiceInMap() {
         User user1 = new User("Vitali", 0, new GregorianCalendar(1983, 11, 24));
         User user2 = new User("Vitali", 0, new GregorianCalendar(1983, 11, 24));
 
@@ -55,7 +55,7 @@ public class UserTest {
 
     @Test
     @Ignore
-    public void whenTwoUsersWithSameFieldsWithoutProperHashwithProperEqualsAreStoredTwiceInMap(){
+    public void whenTwoUsersWithSameFieldsWithoutProperHashwithProperEqualsAreStoredTwiceInMap() {
         User user1 = new User("Vitali", 0, new GregorianCalendar(1983, 11, 24));
         User user2 = new User("Vitali", 0, new GregorianCalendar(1983, 11, 24));
 
@@ -73,7 +73,7 @@ public class UserTest {
 
 
     @Test
-    public void whenTwoUsersWithSameFieldsWithProperHashandEqualsAreStoredOnceInMap(){
+    public void whenTwoUsersWithSameFieldsWithProperHashandEqualsAreStoredOnceInMap() {
         User user1 = new User("Vitali", 0, new GregorianCalendar(1983, 11, 24));
         User user2 = new User("Vitali", 0, new GregorianCalendar(1983, 11, 24));
 

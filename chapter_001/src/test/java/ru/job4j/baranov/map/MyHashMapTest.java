@@ -30,10 +30,10 @@ public class MyHashMapTest {
 
 
     @Test
-    public void whenInsertThirtySizeIsThirty (){
+    public void whenInsertThirtySizeIsThirty() {
         MyHashMap<Integer, Integer> map = new MyHashMap<>();
 
-        for (int i = 0; i < 30; i++ ) {
+        for (int i = 0; i < 30; i++) {
             map.insert(i, i);
         }
         assertEquals(30, map.getSize());

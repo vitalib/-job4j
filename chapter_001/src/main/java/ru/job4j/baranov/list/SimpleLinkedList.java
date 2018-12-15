@@ -2,7 +2,7 @@ package ru.job4j.baranov.list;
 
 import java.util.Iterator;
 
-public class SimpleLinkedList<E> implements Iterable<E>{
+public class SimpleLinkedList<E> implements Iterable<E> {
 
     private int size;
     private Node<E> first;

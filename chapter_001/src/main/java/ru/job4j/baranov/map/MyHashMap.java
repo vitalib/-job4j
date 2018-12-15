@@ -2,7 +2,7 @@ package ru.job4j.baranov.map;
 
 import java.util.Iterator;
 
-public class MyHashMap <K, V> implements Iterable<K> {
+public class MyHashMap<K, V> implements Iterable<K> {
 
     private Object[] array = new Object[16];
     double loadFactor = 0.75;
@@ -19,7 +19,11 @@ public class MyHashMap <K, V> implements Iterable<K> {
                 if (tmp != null) {
                     return true;
                 }
-                while (index < array.length && (tmp = (Node) array[index++]) == null) {
+                while (index < array.length) {
+                    tmp = (Node) array[index++];
+                    if (tmp != null) {
+                        break;
+                    }
                 }
                 return tmp != null;
             }
@@ -41,14 +45,14 @@ public class MyHashMap <K, V> implements Iterable<K> {
         private V value;
         private Node next;
 
-        public Node (K key, V value, Node next) {
+        public Node(K key, V value, Node next) {
             this.key = key;
             this.value = value;
             this.next = next;
         }
     }
 
-    public boolean insert(K key, V value){
+    public boolean insert(K key, V value) {
         boolean result = true;
         int bucket = Math.abs(key.hashCode()) % array.length;
         Node tmp;
@@ -104,12 +108,12 @@ public class MyHashMap <K, V> implements Iterable<K> {
     }
 
 
-    boolean delete (K key) {
+    boolean delete(K key) {
         boolean result = false;
         int bucket = Math.abs(key.hashCode()) % array.length;
         if (array[bucket] != null) {
             Node first = (Node) array[bucket];
-            if (first.key.equals(key)){
+            if (first.key.equals(key)) {
                 array[bucket] = first.next;
                 elements--;
             } else {
