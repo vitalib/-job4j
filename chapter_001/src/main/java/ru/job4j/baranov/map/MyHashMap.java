@@ -1,21 +1,27 @@
 package ru.job4j.baranov.map;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class MyHashMap <K, V> implements Iterable<K> {
 
     private Object[] array = new Object[16];
-    double loadFactor = 0.75;
-    int elements = 0;
+    private double loadFactor = 0.75;
+    private int elements = 0;
 
     @Override
     public Iterator<K> iterator() {
         return new Iterator<K>() {
             int index = 0;
             Node tmp = null;
+            int elementsOnStart = elements;
 
             @Override
             public boolean hasNext() {
+                if (elementsOnStart != elements) {
+                    throw new ConcurrentModificationException();
+                }
                 if (tmp != null) {
                     return true;
                 }
@@ -31,7 +37,12 @@ public class MyHashMap <K, V> implements Iterable<K> {
                     tmp = tmp.next;
                     return result;
                 }
-                return null;
+                throw new NoSuchElementException();
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
             }
         };
     }
@@ -87,8 +98,7 @@ public class MyHashMap <K, V> implements Iterable<K> {
 
     private void resize() {
         int arraySize = array.length;
-        Object[] tmp = new Object[arraySize];
-        System.arraycopy(array, 0, tmp, 0, array.length);
+        Object[] tmp = array;
         array = new Object[arraySize * 2];
         elements = 0;
         for (int i = 0; i < arraySize; i++) {
