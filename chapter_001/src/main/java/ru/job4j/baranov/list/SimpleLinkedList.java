@@ -1,5 +1,7 @@
 package ru.job4j.baranov.list;
 
+import java.util.NoSuchElementException;
+
 public class SimpleLinkedList<E> {
 
     private int size;
@@ -19,6 +21,9 @@ public class SimpleLinkedList<E> {
      * Реализовать метод удаления первого элемент в списке.
      */
     public E delete() {
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
         E item = first.data;
         first = first.next;
         size--;
