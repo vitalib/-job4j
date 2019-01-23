@@ -15,6 +15,7 @@
 
     <modules>
         <module>chapter_001</module>
+        <module>chapter_003</module>
     </modules>
 
     <build>
@@ -53,8 +54,24 @@
                     </execution>
                 </executions>
             </plugin>
-
-
+            <plugin>
+                <groupId>ru.vitalib</groupId>
+                <artifactId>filecounter-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <configuration>
+                    <minNumberOfFiles>5</minNumberOfFiles>
+                    <!--<depthOfSearch>5</depthOfSearch>-->
+                    <!--<rootDirectory>/home</rootDirectory>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>countFiles</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
