@@ -77,4 +77,18 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
             }
         };
     }
+
+    public boolean isBinary() {
+        Queue<Node<E>> nodes = new LinkedList<>();
+        nodes.add(root);
+        while (nodes.size() != 0) {
+            Node<E> node = nodes.poll();
+            if (node.leaves().size() > 2) {
+                return false;
+            }
+            nodes.addAll(node.leaves());
+        }
+        return true;
+    }
+
 }
